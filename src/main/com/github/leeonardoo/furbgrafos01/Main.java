@@ -65,5 +65,13 @@ public class Main {
                 {0, 0, 1},
                 {0, 1, 0},
         }));
+
+        //Nao dirigido arestas paralelas
+        System.out.println(grafos.tipoDoGrafo(new int[][]{
+                {0, 1, 1, 2},
+                {1, 0, 1, 0},
+                {1, 1, 0, 1},
+                {2, 0, 1, 0},
+        }));
     }
 }

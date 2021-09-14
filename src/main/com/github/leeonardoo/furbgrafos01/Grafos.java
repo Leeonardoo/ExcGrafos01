@@ -34,20 +34,23 @@ public class Grafos {
         int valueCount = 0;
         int reverseValueCount = 0;
         int adjCount = 0;
-        //TODO Multigrafos dirigidos (i.e values higher than 1)
+        boolean hasParallelEdges = false;
         //TODO regular
         for (int i = 0; i < matrizAdj.length; i++) {
             for (int j = 0; j < matrizAdj[i].length; j++) {
                 int value = matrizAdj[i][j];
                 int valueReversed = matrizAdj[j][i];
                 if (value > 0 && i != j) {
-                    valueCount++;
+                    valueCount += value;
+                    if (value > 1) {
+                        hasParallelEdges = true;
+                    }
                 } else if (value > 0) {
                     hasLoop = true;
                 }
 
                 if (value > 0 && valueReversed > 0 && i != j) {
-                    reverseValueCount++;
+                    reverseValueCount += valueReversed;
                 }
 
                 if (j >= i && value > 0) {
@@ -57,15 +60,15 @@ public class Grafos {
         }
 
         boolean isDigraph = !(reverseValueCount >= valueCount);
-        boolean isMultiGraph = hasLoop || (reverseValueCount > 0 && reverseValueCount != valueCount);
+        boolean isMultiGraph = hasLoop || hasParallelEdges || (reverseValueCount > 0 && reverseValueCount != valueCount);
         boolean isComplete = adjCount == matrizAdj.length && !isMultiGraph;
 
         var txt = "";
 
         if (isDigraph) {
-            txt += "Digrafo";
+            txt += "Dirigido";
         } else {
-            txt += "Não Digrafo";
+            txt += "Não Dirigido";
         }
 
         if (isMultiGraph) {
