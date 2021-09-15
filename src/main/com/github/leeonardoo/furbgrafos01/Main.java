@@ -3,23 +3,21 @@ package com.github.leeonardoo.furbgrafos01;
 public class Main {
 
     public static void main(String[] args) {
-        Grafos grafos = new Grafos();
-
-        System.out.println(grafos.tipoDoGrafo(new int[][]{
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 1, 1, 1},
                 {1, 0, 1, 0},
                 {1, 1, 0, 1},
                 {1, 0, 1, 0},
         }));
 
-        System.out.println(grafos.tipoDoGrafo(new int[][]{
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 0, 0, 1},
                 {1, 0, 0, 0},
                 {0, 1, 0, 0},
                 {0, 1, 1, 0},
         }));
 
-        System.out.println(grafos.tipoDoGrafo(new int[][]{
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 1, 1, 1},
                 {1, 0, 1, 0},
                 {1, 1, 1, 1},
@@ -27,7 +25,7 @@ public class Main {
         }));
 
         //Digrafo multigrafo
-        System.out.println(grafos.tipoDoGrafo(new int[][]{
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 1, 0, 1},
                 {1, 0, 0, 0},
                 {0, 1, 0, 0},
@@ -35,7 +33,7 @@ public class Main {
         }));
 
         //Nulo
-        System.out.println(grafos.tipoDoGrafo(new int[][]{
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
@@ -43,35 +41,41 @@ public class Main {
         }));
 
         //Nulo
-        System.out.println(grafos.tipoDoGrafo(new int[][]{}));
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{}));
 
         //Completo
-        System.out.println(grafos.tipoDoGrafo(new int[][]{
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 1, 1},
                 {1, 0, 1},
                 {1, 1, 0},
         }));
 
         //Digrafo Simples Completo
-        System.out.println(grafos.tipoDoGrafo(new int[][]{
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 1, 1},
                 {0, 0, 1},
                 {0, 0, 0},
         }));
 
         //Digrafo Multigrafo (não)Completo (pq não é simples)
-        System.out.println(grafos.tipoDoGrafo(new int[][]{
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 1, 1},
                 {0, 0, 1},
                 {0, 1, 0},
         }));
 
         //Nao dirigido arestas paralelas
-        System.out.println(grafos.tipoDoGrafo(new int[][]{
+        System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 1, 1, 2},
                 {1, 0, 1, 0},
                 {1, 1, 0, 1},
                 {2, 0, 1, 0},
         }));
+
+        /*System.out.println(Grafos.calculateVertexDegree(new int[][]{
+                {0, 0, 0},
+                {0, 0, 2},
+                {0, 2, 1},
+        }, 2));*/
     }
 }
