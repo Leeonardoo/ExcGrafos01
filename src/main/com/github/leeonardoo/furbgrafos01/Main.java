@@ -72,10 +72,10 @@ public class Main {
                 {2, 0, 1, 0},
         }));
 
-        /*System.out.println(Grafos.calculateVertexDegree(new int[][]{
+        System.out.println(Grafos.grausDoVertice(new int[][]{
                 {0, 0, 0},
                 {0, 0, 2},
                 {0, 2, 1},
-        }, 2));*/
+        }));
     }
 }

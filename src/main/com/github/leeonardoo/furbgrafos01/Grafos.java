@@ -1,5 +1,7 @@
 package com.github.leeonardoo.furbgrafos01;
 
+import java.util.Arrays;
+
 /**
  * 1. Dada a matriz de adjacência do grafo de ordem n, você deve implementar um programa que
  * responda as seguintes perguntas:
@@ -108,11 +110,20 @@ public class Grafos {
      * @return String identificando o grau de cada vértice e por fim, a sequência de graus
      */
     public static String grausDoVertice(int[][] matrizAdj) {
-        String degrees = "";
+        int[] degrees = new int[matrizAdj.length];
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < matrizAdj.length; i++) {
-            degrees += calculateVertexDegree(matrizAdj, i) + " ";
+            int degree = calculateVertexDegree(matrizAdj, i);
+            degrees[i] = degree;
+            result.append(String.format("grau(v%d) = %d\n", i + 1, degree));
         }
-        return degrees;
+
+        Arrays.sort(degrees);
+
+        return result
+                .append("\nSequência de graus:\n")
+                .append(Arrays.toString(degrees))
+                .toString();
     }
 
     /**
