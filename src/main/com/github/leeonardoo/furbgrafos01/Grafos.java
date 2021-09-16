@@ -35,8 +35,11 @@ public class Grafos {
         int reverseValueCount = 0;
         int adjCount = 0;
         boolean hasParallelEdges = false;
-        //TODO regular
+        int[] degreeArray = new int[matrizAdj.length];
+
         for (int i = 0; i < matrizAdj.length; i++) {
+            degreeArray[i] = calculateVertexDegree(matrizAdj, i);
+
             for (int j = 0; j < matrizAdj[i].length; j++) {
                 int value = matrizAdj[i][j];
                 int valueReversed = matrizAdj[j][i];
@@ -77,9 +80,9 @@ public class Grafos {
             txt += ", Simples";
         }
 
-        /*
-        regular
-         */
+        if (Arrays.stream(degreeArray).allMatch(i -> i == degreeArray[0])) {
+            txt += ", Regular";
+        }
 
         if (isComplete && adjCount > 0) {
             txt += ", Completo";
