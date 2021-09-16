@@ -28,8 +28,6 @@ public class Grafos {
      * @return String contendo o tipo do grafo
      */
     public static String tipoDoGrafo(int[][] matrizAdj) {
-        checkMatrix(matrizAdj);
-
         boolean hasLoop = false;
         int valueCount = 0;
         int reverseValueCount = 0;
@@ -98,7 +96,6 @@ public class Grafos {
      * @return String com a quantidade e o conjunto de arestas
      */
     public static String arestasDoGrafo(int[][] matrizAdj) {
-        checkMatrix(matrizAdj);
 
         return "";
     }
@@ -111,50 +108,11 @@ public class Grafos {
      * @return String identificando o grau de cada vértice e por fim, a sequência de graus
      */
     public static String grausDoVertice(int[][] matrizAdj) {
-        checkMatrix(matrizAdj);
-
-        if (isDigraph(matrizAdj)) {
-            String degrees = "";
-            for (int i =0; i < matrizAdj.length; i++) {
-                degrees += calculateVertexDegree(matrizAdj, i, true) + " ";
-            }
-            return degrees;
-        } else {
-            String degrees = "";
-            for (int i =0; i < matrizAdj.length; i++) {
-                degrees += calculateVertexDegree(matrizAdj, i, false) + " ";
-            }
-            return degrees;
-        }
-//        return "";
-    }
-
-    /**
-     * Verifica se um grafo é dirigido ou não
-     *
-     * @param matrizAdj matriz de adjacência
-     * @return true se é dirigido, false do contrário
-     */
-    public static boolean isDigraph(int[][] matrizAdj) {
-        checkMatrix(matrizAdj);
-
-        int valueCount = 0;
-        int reverseValueCount = 0;
+        String degrees = "";
         for (int i = 0; i < matrizAdj.length; i++) {
-            for (int j = 0; j < matrizAdj[i].length; j++) {
-                int value = matrizAdj[i][j];
-                int valueReversed = matrizAdj[j][i];
-                if (value > 0 && i != j) {
-                    valueCount += value;
-                }
-
-                if (value > 0 && valueReversed > 0 && i != j) {
-                    reverseValueCount += valueReversed;
-                }
-            }
+            degrees += calculateVertexDegree(matrizAdj, i) + " ";
         }
-
-        return !(reverseValueCount >= valueCount);
+        return degrees;
     }
 
     /**
@@ -164,7 +122,7 @@ public class Grafos {
      * @param vertex    vértice da qual o grau vai ser calculado
      * @return grau da vértice
      */
-    public static int calculateVertexDegree(int[][] matrizAdj, int vertex, boolean isDigraph) {
+    public static int calculateVertexDegree(int[][] matrizAdj, int vertex) {
         if (matrizAdj.length == 0) return 0;
 
         int degree = 0;
@@ -180,19 +138,5 @@ public class Grafos {
         }
 
         return degree;
-    }
-
-    /**
-     * Verifica se a matriz informada é válida, apenas afim de não causar
-     * ArrayIndexOutOfBoundsException ao rodar o método.
-     *
-     * @param matrizAdj matriz de adjacência a ser validada
-     */
-    private static void checkMatrix(int[][] matrizAdj) {
-        for (int[] ints : matrizAdj) {
-            if (ints.length != matrizAdj.length) {
-                throw new IllegalArgumentException("Matriz de adjacência inválida");
-            }
-        }
     }
 }

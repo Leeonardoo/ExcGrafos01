@@ -150,16 +150,4 @@ class GrafosTest {
             Grafos.calculateVertexDegree(testArr, 0)
         )
     }
-
-    @Test
-    fun dummy() {
-        println(Grafos.grausDoVertice(
-            arrayOf(
-                intArrayOf(0, 1, 1, 1),
-                intArrayOf(1, 0, 1, 0),
-                intArrayOf(1, 1, 0, 1),
-                intArrayOf(1, 0, 1, 0)
-            )
-        ))
-    }
 }
