@@ -1,5 +1,7 @@
 package com.github.leeonardoo.furbgrafos01;
 
+//Leonardo de Oliveira - BCC
+
 public class Main {
 
     public static void main(String[] args) {
@@ -57,7 +59,7 @@ public class Main {
                 {0, 0, 0},
         }));
 
-        //Digrafo Multigrafo (não)Completo (pq não é simples)
+        //Digrafo Multigrafo (não)Completo (não é simples)
         System.out.println(Grafos.tipoDoGrafo(new int[][]{
                 {0, 1, 1},
                 {0, 0, 1},
@@ -72,18 +74,6 @@ public class Main {
                 {2, 0, 1, 0},
         }));
 
-        //Petersen graph (regular)
-        System.out.println(Grafos.tipoDoGrafo(new int[][]{
-                {0, 1, 0, 0, 1, 1, 0, 0, 0, 0},
-                {1, 0, 1, 0, 0, 0, 1, 0, 0, 0},
-                {0, 1, 0, 1, 0, 0, 0, 1, 0, 0},
-                {0, 0, 1, 0, 1, 0, 0, 0, 1, 0},
-                {1, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-                {1, 0, 0, 0, 0, 0, 0, 1, 1, 0},
-                {0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-                {0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-                {0, 0, 0, 1, 0, 1, 1, 0, 0, 0},
-                {0, 0, 0, 1, 0, 1, 1, 0, 0, 0}
-        }));
+
     }
 }

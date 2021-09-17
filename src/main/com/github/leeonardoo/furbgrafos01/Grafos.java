@@ -2,6 +2,8 @@ package com.github.leeonardoo.furbgrafos01;
 
 import java.util.Arrays;
 
+//Leonardo de Oliveira - BCC
+
 /**
  * 1. Dada a matriz de adjacência do grafo de ordem n, você deve implementar um programa que
  * responda as seguintes perguntas:
@@ -101,8 +103,32 @@ public class Grafos {
      * @return String com a quantidade e o conjunto de arestas
      */
     public static String arestasDoGrafo(int[][] matrizAdj) {
+        int valueCount = 0;
+        int reverseValueCount = 0;
+        int edges = 0;
 
-        return "";
+        for (int i = 0; i < matrizAdj.length; i++) {
+            for (int j = 0; j < matrizAdj[i].length; j++) {
+                int value = matrizAdj[i][j];
+                int valueReversed = matrizAdj[j][i];
+                if (value > 0 && i != j) {
+                    valueCount += value;
+                    edges+= value;
+                }
+
+                if (value > 0 && valueReversed > 0 && i != j) {
+                    reverseValueCount += valueReversed;
+                }
+            }
+        }
+
+        boolean isDigraph = !(reverseValueCount >= valueCount);
+
+        if (isDigraph) {
+            edges = edges/2;
+        }
+
+        return ""+edges;
     }
 
     /**
